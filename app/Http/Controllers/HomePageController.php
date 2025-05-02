@@ -41,4 +41,21 @@ public function showdetails($id){
     $cities = City::all();
     return view("traject_details", ["trajet"=>$trajet, "cities"=>$cities]);
 }
+
+
+public function showmobilepaiement($id){
+
+    $trajet = Trajet::where("id",$id)->with("agency", "category")->first();
+    $cities = City::all();
+    return view("mobilepaiement", ["trajet"=>$trajet, "cities"=>$cities]);
+}
+
+public function showcardpaiement($id){
+
+    $trajet = Trajet::where("id",$id)->with("agency", "category")->first();
+    $cities = City::all();
+    return view("cardpaiement", ["trajet"=>$trajet, "cities"=>$cities]);
+}
+
+
 }

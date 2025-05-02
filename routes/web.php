@@ -26,6 +26,10 @@ Route::get('/schedules', [AuthController::class, 'show_schedules'])->name('sched
 
 Route::get("/trajets-details/{id}", [HomePageController::class, "showdetails"])->name("trajet_details");
 
+Route::get("/mobilepaiement/{id}", [HomePageController::class, "showmobilepaiement"])->name("mobile_paiement");
+
+Route::get("/cardpaiement/{id}", [HomePageController::class, "showcardpaiement"])->name("card_paiement");
+
 Route::middleware(AdminAuthMiddleware::class)->group(function(){
 
     Route::get("/admin/dashboard",[adminPanelController::class,"show_dashboard"])->name("dashboard");

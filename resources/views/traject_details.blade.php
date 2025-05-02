@@ -143,12 +143,12 @@
       <div>
         <h3 class="font-semibold text-gray-700 mb-2">Payment Method</h3>
         <div class="grid grid-cols-2 gap-3">
-          <button type="button" class="flex items-center justify-center p-3 bg-yellow-400 text-white rounded-xl hover:bg-yellow-500 transition">
+          <a href="{{route("mobile_paiement",$trajet->id) }}" class="flex items-center justify-center p-3 bg-yellow-400 text-white rounded-xl hover:bg-yellow-500 transition">
             <i class="fas fa-mobile-alt mr-2"></i> Mobile Money
-          </button>
-          <button type="button" class="flex items-center justify-center p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+          </a>
+          <a href="{{route("card_paiement",$trajet->id) }}" class="flex items-center justify-center p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
             <i class="fas fa-credit-card mr-2"></i> Card
-          </button>
+          </a>
         </div>
       </div>
 
