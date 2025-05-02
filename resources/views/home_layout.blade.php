@@ -8,14 +8,39 @@
     <title>Home page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{{ asset('CSS/app.css') }}">
+
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header class="bg-blue-950 text-white p-4">
+            {{-- bulles --}}
+    <div class="full-page-background">
+        <div class="area w-full h-screen absolute bg-gradient-to-l from-[#8f94fb] to-[#4e54c8] -z-10">
+            <ul class="circles relative w-full h-full overflow-hidden">
+                  <li class="circle circle1"></li>
+                  <li class="circle circle2"></li>
+                  <li class="circle circle3"></li>
+                  <li class="circle circle4"></li>
+                  <li class="circle circle5"></li>
+                  <li class="circle circle6"></li>
+                  <li class="circle circle7"></li>
+                  <li class="circle circle8"></li>
+                  <li class="circle circle9"></li>
+                  <li class="circle circle10"></li>
+                </ul>
+        </div>
+    </div>
+
+            {{-- /bulles --}}
+    <div class="page-content">
+    <header class="bg-blue-950 text-white py-10 shadow-lg">
+        
+
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold"><a href="/"> TravelConneckt</a></h1>
-            <nav class="flex gap-4 text-sm">
+            <h1 class="text-4xl font-bold"><a href="/"> TravelConneckt</a></h1>
+            <nav class="flex gap-6 text-sm">
                 <a href="{{ route('schedules') }}" class="hover:underline">Schedule</a>
                 @if (Auth::user())
                     <a href="{{ route('logout') }}" class="hover:underline">
@@ -40,10 +65,15 @@
             @endforeach
         </div>
     </nav>
+
+
 @yield("content")
+
+
 
 <footer class="bg-blue-950 text-white py-4 text-center mt-10">
     &copy; 2025 TravelConneckt. All rights reserved.
 </footer>
+</div>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <section class="container mx-auto p-6 text-center">
     <h2 class="text-2xl md:text-4xl font-bold text-blue-900 mb-6 animate-pulse">Book Your Trip Hassle Free</h2>
 
-    <div class="bg-white p-6 rounded-lg shadow-md flex flex-wrap justify-center gap-4">
+    <div class="bg-[rgb(255,255,255,0.7)] p-6 rounded-lg shadow-md flex flex-wrap justify-center gap-4 w-full">
         <div class="flex flex-col">
         <div class="flex gap-2">
         <form action="{{ route("filter") }}" method="POST" class="flex flex-wrap justify-center gap-4">
