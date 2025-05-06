@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminPanelController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
@@ -14,6 +15,13 @@ Route::get('/',[HomePageController::class,"show_homepage"] )->name("home");
 Route::get('/sign_up', [AuthController::class, 'showSign_up'])->name('show.sign_up') ;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login') ;
+
+Route::controller(SocialiteController::class)->group(function(){
+
+    Route::get('auth/google', 'googleLogin')->name('auth.google');
+    Route::get('auth/google-callback', 'googleAuthentification')->name('auth.google-callback');
+});
+
 
 Route::post('/sign_up_post', [AuthController::class, 'Sign_up'])->name('sign_up_post') ;
 
