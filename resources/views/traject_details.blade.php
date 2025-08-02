@@ -132,13 +132,14 @@
     </div>
 
     <!-- Formulaire (on le met après maintenant) -->
-    <form class="w-full bg-gray-100/50 p-6 rounded-2xl shadow-lg space-y-5">
+    <form action="{{ route('create_reservation', $trajet->id) }}" method="POST" class="w-full bg-gray-100/50 p-6 rounded-2xl shadow-lg space-y-5">
+      @csrf
       <h2 class="text-2xl font-bold text-center text-blue-700 mb-2">Complete Your Booking</h2>
 
-      <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
-      <input type="tel" placeholder="Phone Number" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
-      <input type="email" placeholder="Email (optional)" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
-      <input type="number" placeholder="Number of Tickets" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+      <input type="text" name="full_name" placeholder="Full Name" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" required>
+      <input type="tel" name="phone" placeholder="Phone Number" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" required>
+      <input type="email" name="email" placeholder="Email (optional)" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+      <input type="number" name="num_tickets" placeholder="Number of Tickets" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" value="1" min="1" required>
 
       <div>
         <h3 class="font-semibold text-gray-700 mb-2">Payment Method</h3>

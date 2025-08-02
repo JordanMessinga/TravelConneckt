@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign up</title>
+@extends("auth_layout")
+@section("content")
 
     <style>
-       body {
-            font-family: Arial, sans-serif;
-            background-color: rgb(233, 233, 233);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+       
         .sign_upcontainer {
-            background: white;
+            background: rgba(255, 255, 255, 0.3);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 10px #42A5F5;
+            box-shadow: 0px 0px 10px #10558e;
             text-align: center;
             width: 350px;
+            margin-top: 2%;
         }
         h2 {
             margin-bottom: 20px;
@@ -41,7 +29,7 @@
         .sign_up-button {
             width: 92%;
             padding: 12px;
-            background-color: #42A5F5;
+            background-color: #10558e;
             border: none;
             color: white;
             font-size: 18px;
@@ -50,7 +38,7 @@
             margin: 15px 0;
         }
         .sign_up-button:hover {
-            background-color: #1090f8;
+            background-color: #10558e;
             transition-duration: 150ms;
         }
         .social-buttons {
@@ -96,7 +84,7 @@
             margin-top: 10px;
         }
         .register a {
-            color:#42A5F5;
+            color:#10558e;
             text-decoration: none;
             font-weight: bold;
         }
@@ -108,11 +96,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     
-</head>
+
 <body>
+    <center>
+    <div>
     <div class="sign_upcontainer">
         {{--<img src="/images/essai4.jpeg" alt="logo-travelconneckt" class="w-8 h-8">--}}
-        <h2 class="text-gray-400 px-20">Sign up</h2>
+        <h2 class="text-gray-700 px-20">Sign up</h2>
         <form action="{{ route('sign_up_post') }}" method="POST">
             @csrf
         <input type="name" name="name" placeholder="Your name" required>
@@ -140,11 +130,11 @@
             </button>
         </div>
         <div class="register">
-            Already have an account? - <a href="#">Click here to log in</a>
+            Already have an account? - <a href="{{ route('login') }}">Click here to log in</a>
         </div>
     </div>
-    <div class="px-20">
-        <img src="/images/essai4.jpeg" alt="Travelconneckt-img" class="w-100 h-100">
     </div>
+    </center>
 </body>
-</html>
+
+@endsection

@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+@extends("auth_layout")
+@section("content")
+
+
 
     <style>
-       body {
-            font-family: Arial, sans-serif;
-            background-color: rgb(233, 233, 233);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+       
         .logincontainer {
-            background: white;
+            background: rgba(255, 255, 255, 0.3);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 10px #42A5F5;
+            box-shadow: 0px 0px 10px #10558e;
             text-align: center;
             width: 350px;
+            margin-top: 8%;
         }
         h2 {
             margin-bottom: 20px;
@@ -42,7 +32,7 @@
             text-align: right;
             margin: 5px 40px;
             font-size: 14px;
-            color: #42A5F5;
+            color: #1977c4;
             text-decoration: none;
         }
         .forgot-password:hover {
@@ -51,7 +41,7 @@
         .login-button {
             width: 92%;
             padding: 12px;
-            background-color: #42A5F5;
+            background-color: #10558e;
             border: none;
             color: white;
             font-size: 18px;
@@ -60,7 +50,7 @@
             margin: 15px 0;
         }
         .login-button:hover {
-            background-color: #1090f8;
+            background-color: #10558e;
             transition-duration: 150ms;
         }
         .social-buttons {
@@ -106,7 +96,7 @@
             margin-top: 10px;
         }
         .register a {
-            color:#42A5F5;
+            color:#10558e;
             text-decoration: none;
             font-weight: bold;
         }
@@ -118,11 +108,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     
-</head>
+
 <body>
-    <div class="logincontainer">
+    <center>
+    <div>
+    <div class="logincontainer ">
         {{--<img src="/images/logo4.jpg" alt="logo-travelconneckt" class="h-8 w-8">--}}
-        <h2 class="text-gray-400 px-20">Login</h2>
+        <h2 class="text-gray-700 px-20">Login</h2>
         <form action="{{ route('login_post') }}" method="POST">
             @csrf
         <input type="email" name="email" placeholder="Your Email" required>
@@ -148,11 +140,12 @@
         @endif
 
         <div class="register">
-            Don't have an account? - <a href="#">Click here to create one</a>
+            Don't have an account? - <a href="{{ route('show.sign_up') }}">Click here to create one</a>
         </div>
     </div>
-    <div class="px-20">
-        <img src="/images/essai4.jpeg" alt="Travelconneckt-img" class="h-100 w-100">
     </div>
+    </center>
 </body>
-</html>
+
+
+@endsection

@@ -33,6 +33,7 @@ class SocialiteController extends Controller
                     'email' => $googleUser->email,
                     'password' => Hash::make('password0611'),
                     'google_id' => $googleUser->id,
+                    'id_role'=>1,
                 ]);
                     
                 if ($userData){

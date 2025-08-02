@@ -16,7 +16,8 @@ class AuthController extends Controller
    
     public function showLogin()
     {
-        return view("auth.login");
+        $cities = City::all();
+        return view("auth.login", ["cities"=>$cities]);
     }
 
     public function Sign_up(Request $request)
@@ -69,8 +70,8 @@ class AuthController extends Controller
 
     }
 
-    public function show_schedules(){
+    public function show_reservations(){
         $cities = City::all();
-        return view('schedule',["cities"=>$cities]);
+        return view('reservations',["cities"=>$cities]);
     }
 }

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Agency;
 use App\Models\City;
+use App\Models\Reservation;
 use App\Models\Trajet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomePageController extends Controller
 {
@@ -57,5 +60,67 @@ public function showcardpaiement($id){
     return view("cardpaiement", ["trajet"=>$trajet, "cities"=>$cities]);
 }
 
+public function show_reservations(){
+    $iduser = Auth::user()->id;
+    $reservations = Reservation::where("id_user",$iduser)->with("trajet")->get();
+    $cities = City::all();
+    return view('reservations',["reservations"=>$reservations,"cities"=>$cities]);
+}
+
+public function createReservation(Request $request, $id){
+    // Validate the request
+    $request->validate([
+        'full_name' => 'required|string|max:255',
+        'phone' => 'required|string|max:20',
+        'num_tickets' => 'required|integer|min:1',
+    ]);
+    
+    // Check if user is authenticated
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('error', 'You must be logged in to make a reservation');
+    }
+    
+    // Check if trajet exists
+    $trajet = Trajet::find($id);
+    if (!$trajet) {
+        return redirect()->route('home')->with('error', 'Trip not found');
+    }
+    
+    // Create the reservation
+    $reservation = new Reservation();
+    $reservation->id_user = Auth::user()->id;
+    $reservation->id_trajet = $id;
+    $reservation->save();
+    
+    return redirect()->route('reservations')->with('success', 'Reservation created successfully!');
+}
+
+public function downloadTicket($id)
+{
+    // Check if user is authenticated
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('error', 'You must be logged in to download tickets');
+    }
+    
+    // Find the reservation
+    $reservation = Reservation::with(['trajet.agency', 'trajet.category'])->find($id);
+    
+    // Check if reservation exists and belongs to the current user
+    if (!$reservation || $reservation->id_user != Auth::user()->id) {
+        return redirect()->route('reservations')->with('error', 'Ticket not found or unauthorized');
+    }
+    
+    // Generate PDF
+    $pdf = PDF::loadView('pdf.ticket', [
+        'reservation' => $reservation,
+        'user' => Auth::user()
+    ]);
+    
+    // Set PDF options
+    $pdf->setPaper('a4', 'portrait');
+    
+    // Download the PDF
+    return $pdf->download('ticket-' . $reservation->id . '.pdf');
+}
 
 }

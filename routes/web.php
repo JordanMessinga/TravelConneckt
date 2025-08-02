@@ -30,13 +30,16 @@ Route::post('/login_post', [AuthController::class, 'Login'])->name('login_post')
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout') ;
 Route::post("/filtered",[HomePageController::class,"filterTrips"])->name("filter");
 
-Route::get('/schedules', [AuthController::class, 'show_schedules'])->name('schedules') ;
+Route::get('/reservations', [HomePageController::class, 'show_reservations'])->name('reservations') ;
 
 Route::get("/trajets-details/{id}", [HomePageController::class, "showdetails"])->name("trajet_details");
 
 Route::get("/mobilepaiement/{id}", [HomePageController::class, "showmobilepaiement"])->name("mobile_paiement");
 
 Route::get("/cardpaiement/{id}", [HomePageController::class, "showcardpaiement"])->name("card_paiement");
+
+Route::post("/create-reservation/{id}", [HomePageController::class, "createReservation"])->name("create_reservation");
+Route::get("/download-ticket/{id}", [HomePageController::class, "downloadTicket"])->name("download_ticket");
 
 Route::middleware(AdminAuthMiddleware::class)->group(function(){
 

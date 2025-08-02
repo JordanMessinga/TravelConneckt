@@ -35,13 +35,13 @@
 
             {{-- /bulles --}}
     <div class="page-content">
-    <header class="bg-blue-950 text-white py-10 shadow-lg">
+    <header class="bg-blue-900 text-white py-8 shadow-lg">
         
 
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-4xl font-bold"><a href="/"> TravelConneckt</a></h1>
             <nav class="flex gap-6 text-sm">
-                <a href="{{ route('schedules') }}" class="hover:underline">Schedule</a>
+                <a href="{{ route('reservations') }}" class="hover:underline">Reservations</a>
                 @if (Auth::user())
                     <a href="{{ route('logout') }}" class="hover:underline">
                         Logout
@@ -57,23 +57,70 @@
             </nav>
         </div>
     </header>
-    <nav class="bg-blue-800 text-white py-3">
-        <div class="container mx-auto flex flex-wrap justify-center gap-4">
-            @foreach ($cities as $city)
-                
-            <button class="px-4 py-2 hover:underline">{{$city->name}}</button>
-            @endforeach
-        </div>
-    </nav>
+    
 
 
 @yield("content")
 
 
 
-<footer class="bg-blue-950 text-white py-4 text-center mt-10">
-    &copy; 2025 TravelConneckt. All rights reserved.
+<footer class="bg-blue-900 text-gray-200">
+    <div class="container mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="mb-6 md:mb-0">
+                <a href="#" class="text-3xl font-bold tracking-wide text-white">
+                    TravelConnect
+                </a>
+                <p class="mt-4 text-white">
+                    Connecter les voyageurs, une destination à la fois.
+                </p>
+            </div>
+
+            <div class="mb-6 md:mb-0">
+                <h5 class="text-xl font-semibold mb-4 text-white">Liens rapides</h5>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Accueil</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">À propos</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Services</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Trajets</a></li>
+                </ul>
+            </div>
+
+            <div class="mb-6 md:mb-0">
+                <h5 class="text-xl font-semibold mb-4 text-white">Informations</h5>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Termes et Conditions</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Politique de confidentialité</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-xl font-semibold mb-4 text-white">Suivez-nous</h5>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-2xl hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-2xl hover:text-white transition-colors duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-2xl hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-8 border-gray-700" />
+        <div class="text-center text-gray-400">
+            &copy; 2025 TravelConnect. Tous droits réservés.
+        </div>
+    </div>
 </footer>
+
+
+
 </div>
 </body>
 </html>
