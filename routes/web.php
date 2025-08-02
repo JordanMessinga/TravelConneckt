@@ -41,6 +41,11 @@ Route::get("/cardpaiement/{id}", [HomePageController::class, "showcardpaiement"]
 Route::post("/create-reservation/{id}", [HomePageController::class, "createReservation"])->name("create_reservation");
 Route::get("/download-ticket/{id}", [HomePageController::class, "downloadTicket"])->name("download_ticket");
 
+// Profile routes
+Route::get("/profile", [HomePageController::class, "showProfile"])->name("profile");
+Route::put("/profile/update", [HomePageController::class, "updateProfile"])->name("profile.update");
+Route::put("/profile/password", [HomePageController::class, "updatePassword"])->name("profile.password");
+
 Route::middleware(AdminAuthMiddleware::class)->group(function(){
 
     Route::get("/admin/dashboard",[adminPanelController::class,"show_dashboard"])->name("dashboard");

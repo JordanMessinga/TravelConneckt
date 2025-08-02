@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use App\Models\Trajet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomePageController extends Controller
@@ -121,6 +122,60 @@ public function downloadTicket($id)
     
     // Download the PDF
     return $pdf->download('ticket-' . $reservation->id . '.pdf');
+}
+
+public function showProfile()
+{
+    // Check if user is authenticated
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('error', 'You must be logged in to view your profile');
+    }
+    
+    return view('my_profile');
+}
+
+public function updateProfile(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
+        'phone' => 'nullable|string|max:20',
+        'address' => 'nullable|string|max:500',
+    ]);
+    
+    // Update the user
+    $user = Auth::user();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+    $user->save();
+    
+    return redirect()->route('profile')->with('success', 'Profile updated successfully!');
+}
+
+public function updatePassword(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'current_password' => 'required|string',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
+    
+    // Check if current password is correct
+    if (!Hash::check($request->current_password, Auth::user()->password)) {
+        return redirect()->route('profile')
+            ->with('error', 'Current password is incorrect')
+            ->withErrors(['current_password' => 'Current password is incorrect']);
+    }
+    
+    // Update the password
+    $user = Auth::user();
+    $user->password = Hash::make($request->password);
+    $user->save();
+    
+    return redirect()->route('profile')->with('success', 'Password updated successfully!');
 }
 
 }

@@ -12,6 +12,7 @@
 
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -40,12 +41,50 @@
 
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-4xl font-bold"><a href="/"> TravelConneckt</a></h1>
-            <nav class="flex gap-6 text-sm">
+            <nav class="flex gap-6 text-sm items-center">
                 <a href="{{ route('reservations') }}" class="hover:underline">Reservations</a>
                 @if (Auth::user())
-                    <a href="{{ route('logout') }}" class="hover:underline">
-                        Logout
-                    </a>
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
+                            <span class="flex items-center">
+                                <i class="fas fa-user-circle text-xl mr-2"></i>
+                                <span>Profile</span>
+                            </span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        
+                        <div x-show="open"
+                             @click.away="open = false"
+                             class="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 text-gray-800"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="transform opacity-100 scale-100"
+                             x-transition:leave-end="transform opacity-0 scale-95">
+                            
+                            <div class="px-4 py-3 border-b border-gray-200">
+                                <p class="text-sm font-medium">{{ Auth::user()->name }}</p>
+                                <p class="text-xs text-gray-500 truncate">{{ Auth::user()->email }}</p>
+                            </div>
+                            
+                            <div class="py-2">
+                                <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    <i class="fas fa-user mr-2"></i> My Profile
+                                </a>
+                                <a href="{{ route('reservations') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                    <i class="fas fa-ticket-alt mr-2"></i> My Reservations
+                                </a>
+                               
+                            </div>
+                            
+                            <div class="py-1 border-t border-gray-200">
+                                <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <a href="{{ route('login') }}" class="hover:underline">
                        Login
