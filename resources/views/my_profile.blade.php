@@ -32,7 +32,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Profile Information Card -->
         <div class="md:col-span-2">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-gray-100/50 rounded-lg shadow-lg overflow-hidden">
                 <div class="bg-blue-900 text-white p-4">
                     <h2 class="text-xl font-bold">Profile Information</h2>
                 </div>
@@ -79,7 +79,7 @@
         <!-- Sidebar -->
         <div>
             <!-- Profile Summary Card -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+            <div class="bg-gray-100/50 rounded-lg shadow-lg overflow-hidden mb-6">
                 <div class="bg-blue-900 text-white p-4">
                     <h2 class="text-xl font-bold">Account Summary</h2>
                 </div>
@@ -103,7 +103,7 @@
             </div>
             
             <!-- Password Change Card -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-gray-100/50 rounded-lg shadow-lg overflow-hidden">
                 <div class="bg-blue-900 text-white p-4">
                     <h2 class="text-xl font-bold">Change Password</h2>
                 </div>

@@ -6,7 +6,7 @@
 <section class="container mx-auto py-10 text-center">
     <div class="relative mb-8">
         <h2 class="text-2xl md:text-4xl font-bold text-blue-900">Book Your Trip Hassle Free</h2>
-        <div class="absolute w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-600 bottom-0 left-1/2 transform -translate-x-1/2 mt-2 rounded-full"></div>
+        
     </div>
 
     <div class="bg-gray-100/50 p-8 rounded-xl shadow-lg max-w-4xl mx-auto border border-blue-100">
@@ -67,7 +67,7 @@
   @if ($ftrips)
     <div class="relative mb-10">
       <h1 class="text-center text-3xl font-bold text-blue-900">Search Results</h1>
-      <div class="absolute w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 bottom-0 left-1/2 transform -translate-x-1/2 mt-2 rounded-full"></div>
+      
     </div>
   @endif
   
@@ -75,8 +75,8 @@
     @foreach ($ftrips as $trip)
       <div class="bg-gray-100/50 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-gray-100">
         <!-- Agency Header with Gradient -->
-        <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-blue-900 p-4">
-          <h1 class="font-bold text-xl flex items-center">
+        <div class=" p-4">
+          <h1 class="text-blue-900 font-bold text-xl flex items-center">
             <i class="fa-solid fa-building mr-2"></i>
             {{$trip->agency->name}}
           </h1>
@@ -155,16 +155,16 @@
 <section class="container mx-auto py-8">
     <div class="relative mb-10">
       <h3 class="text-center text-3xl font-bold text-blue-900">Other Trip Options Available</h3>
-      <div class="absolute w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 bottom-0 left-1/2 transform -translate-x-1/2 mt-2 rounded-full"></div>
+      
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         @foreach ($trips as $trip)
           <div class="bg-gray-100/50 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-gray-100">
             <!-- Agency Header with Gradient -->
-            <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-blue-900 p-4">
-              <h1 class="font-bold text-xl flex items-center">
-                <i class="fa-solid fa-building mr-2"></i>
+            <div class=" p-4">
+          <h1 class="text-blue-900 font-bold text-xl flex items-center">
+            <i class="fa-solid fa-building mr-2"></i>
                 {{$trip->agency->name}}
               </h1>
             </div>
@@ -183,13 +183,13 @@
                 
                 <!-- Trip Direction Indicator -->
                 <div class="flex-1 px-4 flex flex-col items-center">
-                  <div class="w-full flex items-center justify-center">
-                    <div class="h-0.5 flex-1 bg-gradient-to-r from-blue-300 to-indigo-500"></div>
-                    <div class="mx-2 text-indigo-600">
-                      <i class="fa-solid fa-bus text-xl transform "></i>
-                    </div>
-                    <div class="h-0.5 flex-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
-                  </div>
+              <div class="w-full flex items-center justify-center">
+                <div class="h-0.5 flex-1 bg-gradient-to-r from-blue-300 to-indigo-500"></div>
+                <div class="mx-2 text-indigo-600">
+                  <i class="fa-solid fa-bus text-xl transform "></i>
+                </div>
+                <div class="h-0.5 flex-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+              </div>
                   <span class="mt-2 text-sm text-gray-500">{{$trip->category->name}}</span>
 
                   <div class="mt-2 bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-sm">
@@ -235,15 +235,15 @@
     <h2 class="text-4xl font-bold text-center text-blue-900 mb-12">Questions Fréquemment Posées</h2>
 
     <div class="space-y-4 max-w-3xl mx-auto px-6">
-        <div class="bg-blue-900 text-white rounded-lg shadow-md overflow-hidden">
-            <button class="w-full flex justify-between items-center p-6 text-xl font-semibold text-white focus:outline-none" onclick="toggleFAQ(this)">
+        <div class="bg-gray-100/50  rounded-lg shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-xl font-semibold  focus:outline-none" onclick="toggleFAQ(this)">
                 Comment puis-je acheter mon billet de bus ?
-                <svg class="w-6 h-6 transform transition-transform duration-200 rotate-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6 transform transition-transform duration-200 rotate-0 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div class="transition-max-height duration-300 ease-in-out overflow-hidden max-h-0" id="answer1">
-                <div class="px-6 pb-6 text-white">
+                <div class="px-6 pb-6 ">
                     <p>
                         Vous pouvez acheter votre billet directement sur notre site web en utilisant notre formulaire de recherche. Sélectionnez votre ville de départ et d'arrivée, les dates, puis choisissez parmi les options de voyage disponibles. Le paiement se fait en ligne via mobile money ou carte de crédit.
                     </p>
@@ -251,15 +251,15 @@
             </div>
         </div>
 
-        <div class="bg-blue-900 text-white rounded-lg shadow-md overflow-hidden">
-            <button class="w-full flex justify-between items-center p-6 text-xl font-semibold text-white focus:outline-none" onclick="toggleFAQ(this)">
+        <div class="bg-gray-100/50  rounded-lg shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-xl font-semibold  focus:outline-none" onclick="toggleFAQ(this)">
                 Comment savoir si un trajet est fiable ?
-                <svg class="w-6 h-6 transform transition-transform duration-200 rotate-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6 transform transition-transform duration-200 rotate-0 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div class="transition-max-height duration-300 ease-in-out overflow-hidden max-h-0" id="answer2">
-                <div class="px-6 pb-6 text-white">
+                <div class="px-6 pb-6 ">
                     <p>
                         Nous travaillons exclusivement avec des compagnies de transport reconnues et fiables. Les informations sur chaque trajet, y compris le nom de la compagnie, sont clairement affichées pour vous permettre de faire votre choix en toute confiance.
                     </p>
@@ -267,15 +267,15 @@
             </div>
         </div>
 
-        <div class="bg-blue-900 text-gray-200 rounded-lg shadow-md overflow-hidden">
-            <button class="w-full flex justify-between items-center p-6 text-xl font-semibold text-white focus:outline-none" onclick="toggleFAQ(this)">
+        <div class="bg-gray-100/50  rounded-lg shadow-md overflow-hidden">
+            <button class="w-full flex justify-between items-center p-6 text-xl font-semibold  focus:outline-none" onclick="toggleFAQ(this)">
                 Y a-t-il une commission lors de l'achat ?
-                <svg class="w-6 h-6 transform transition-transform duration-200 rotate-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6 transform transition-transform duration-200 rotate-0 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div class="transition-max-height duration-300 ease-in-out overflow-hidden max-h-0" id="answer3">
-                <div class="px-6 pb-6 text-white">
+                <div class="px-6 pb-6 ">
                     <p>
                         Une petite commission peut être appliquée pour couvrir les frais de service et les frais de transaction. Le montant total, incluant cette commission, est toujours affiché clairement avant la validation de votre paiement.
                     </p>
